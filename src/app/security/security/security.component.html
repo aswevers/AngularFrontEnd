@@ -1,0 +1,14 @@
+<form #securityForm="ngForm" (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field>
+            <input matInput placeholder="Email" type="text" required [(ngModel)]="gebruikerLogin.email"
+            name="email" />
+            </mat-form-field>
+        </p>
+        <p>
+            <mat-form-field>
+            <input matInput placeholder="Password" type="text" required [(ngModel)]="gebruikerLogin.password" name="password"/>
+            </mat-form-field>
+        </p>
+        <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+        </form>
