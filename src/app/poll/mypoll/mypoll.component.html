@@ -1,9 +1,9 @@
 <div class="backgroundimage">
     <app-navigation></app-navigation>
-    <div class="container">
+    <div >
         
-        <div *ngFor="let item of allPolls" class="poll">
-            <app-poll [item]="item" [pollId]="item.pollId"></app-poll>
+        <div *ngFor="let item of allPolls">
+            <app-poll [item]="item" [pollId]="item.pollId" ></app-poll>
         </div>
     </div>
 </div>

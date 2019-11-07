@@ -5,6 +5,7 @@ import { Stem } from '../models/stem.model';
 import { Poll } from '../models/poll.model';
 import { Gebruiker } from 'src/app/security/models/gebruiker.model';
 import { StemMetAantal } from '../models/stem-met-aantal.model';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-poll',
@@ -12,9 +13,9 @@ import { StemMetAantal } from '../models/stem-met-aantal.model';
   styleUrls: ['./poll.component.css']
 })
 export class PollComponent implements OnInit {
+  faTrash = faTrash;
   @Input() item: Keuze;
   @Input() pollId: number;
-  titel:string = "";
   voted:boolean = false;
   allKeuzes:{
     naam:string;
@@ -32,7 +33,7 @@ export class PollComponent implements OnInit {
     naam:string;
     aantal:number;
   }[];
-
+  totaalAantalStemmen:number;
   
   constructor(private pollService:PollService) { 
     this.allKeuzes=[];
@@ -74,13 +75,8 @@ export class PollComponent implements OnInit {
   }
 
   sortStemmen(){
-    
     var aantal=1;
-    this.allStemmen.sort(function(a,b){
-      if(a.keuze.naam < b.keuze.naam) { return -1; }
-      if(a.keuze.naam > b.keuze.naam) { return 1; }
-      return 0;
-    })
+    this.allStemmen.sort()
     var titel = this.allStemmen[0].keuze.naam;
     for(var i=0; i < this.allStemmen.length; i++){
       if(this.allStemmen[i].keuze.naam == titel){
@@ -90,13 +86,32 @@ export class PollComponent implements OnInit {
           this.gesorteerdeStemmen.push(new StemMetAantal(titel, aantal))
           aantal=1;
           titel = this.allStemmen[i].keuze.naam
-      
       }
     }
-    titel = this.allStemmen[this.allStemmen.length-1].keuze.naam
-
-    this.gesorteerdeStemmen.push(new StemMetAantal(titel, aantal))
+    this.gesorteerdeStemmen.push(new StemMetAantal(this.allStemmen[this.allStemmen.length-1].keuze.naam, aantal))
+    this.gesorteerdeStemmen.sort(function(a,b){
+      if(a.aantal < b.aantal) { return 1; }
+      if(a.aantal > b.aantal) { return -1; }
+      return 0;
+    })
   }
   
+  setTotaalAantalStemmen(aantal:number){
+    return this.allStemmen.length+1
+  }
+
+  deletePoll(){
+    //BLOKKEERT APPLICATIE
+    /* var count=0;
+    var deletedKeuzes=[], deletedStemmen=[];
+    this.pollService.getKeuzesByPollId(this.pollId).forEach(element => {
+      while(element[count]){
+        deletedKeuzes.push[count];
+      }
+    })
+    deletedKeuzes.forEach(element => {
+      this.pollService.deleteStem(element.keuzeId)
+    }) */
+  }
 
 }

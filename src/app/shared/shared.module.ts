@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatProgressBar, MatProgressBarModule } from '@angular/material';
+import {MatIconModule} from '@angular/material/icon';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatSidenavModule, MatListModule } from '@angular/material';
 
@@ -17,7 +19,10 @@ import { MatSidenavModule, MatListModule } from '@angular/material';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressBarModule,
+    MatIconModule,
+    FontAwesomeModule
   ],
   exports:[
     CommonModule,
@@ -27,7 +32,10 @@ import { MatSidenavModule, MatListModule } from '@angular/material';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressBar,
+    MatIconModule,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }

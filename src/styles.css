@@ -106,19 +106,21 @@ ul {
     font-family: 'Montserrat', sans-serif;
   }
 
-  .container{
-    background-color: #eee;
+  .poll{
+    background-color: #fff;
     text-align: left;
-    margin: 0 20%;
-    padding: 10px;   
+    margin: 5% 20%;
+    padding: 10px;  
+    border: 2px solid orange;
   }
-
-  .divider{
-      border-top: 25px solid white;
-  }
-
   .checked{
       background-color: lightgreen;
+  }
+
+  .titel{
+    font-family: 'Staatliches', cursive;
+    border-bottom: 2px dashed orange;
+
   }
 
 

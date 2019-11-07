@@ -10,6 +10,7 @@ import { Vriend } from 'src/app/vriend/models/vriend.model';
 import { VriendService } from 'src/app/vriend/vriend.service';
 import { AuthenticaService } from 'src/app/security/authentica.service';
 import { Pollgebruiker } from '../models/pollgebruiker.model';
+import { Gebruiker } from 'src/app/security/models/gebruiker.model';
 
 @Component({
   selector: 'app-new-poll',
@@ -92,10 +93,9 @@ export class NewPollComponent implements OnInit {
     for(var i; i<=this.vriendent.length;i++){
       var pg = new Pollgebruiker(this.pollId, this.vriendent[i], false);
       this.pollservice.addPollGebruiker(pg);
-      console.log(this.pollservice.addPollGebruiker(pg) + "ee")
     }
     this.pollservice.addPollGebruiker(new Pollgebruiker(this.pollId, parseInt(localStorage.getItem("id")), true));
-    //this.router.navigate(['/mypolls']);
+    this.router.navigate(['/mypolls']);
 
   }
 

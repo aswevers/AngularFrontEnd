@@ -48,4 +48,9 @@ export class PollService {
     return this._httpClient.post<Pollgebruiker>("https://localhost:44369/api/PollGebruiker", pollGebruiker);
   }
 
+  deleteStem(keuzeid:number){
+    return this._httpClient.delete<Stem>("https://localhost:44369/api/Stem/deleteStemWhereKeuzeId/" + keuzeid);
+
+  }
+
 }

@@ -1,16 +1,19 @@
-<div> 
-    <ng-container *ngIf="!voted; else showBlock">
+<div class="poll"> 
         <span>
-            <div class="divider">{{item.titel}}</div><br/>
+            <div class="titel">{{item.titel}}</div>
+            <button (click)="deletePoll()" mat-button *ngIf="!heeftAangemaakt"><fa-icon [icon]="faTrash"></fa-icon></button>
         </span> 
+    <ng-container *ngIf="!voted; else showBlock">
+        
         <div (load)="getKeuzes()"></div>
         <div *ngFor="let item of allKeuzes">
             <button mat-button (click)="addStem(item.keuzeId)">{{item.naam}}</button>
         </div>
     </ng-container>
     <ng-template #showBlock>
-        <div *ngFor="let item of gesorteerdeStemmen">
-            {{item.naam}} => {{item.aantal}}
+        <div *ngFor="let item of gesorteerdeStemmen" class="vriendenlijst">
+            {{item.naam}} ~ {{item.aantal}} / {{setTotaalAantalStemmen()}}
+            <mat-progress-bar mode="determinate" value="{{item.aantal/100*setTotaalAantalStemmen()}}"></mat-progress-bar>
         </div>
     </ng-template>
     
