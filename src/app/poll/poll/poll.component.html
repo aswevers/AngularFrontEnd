@@ -1,0 +1,17 @@
+<div> 
+    <ng-container *ngIf="!voted; else showBlock">
+        <span>
+            <div class="divider">{{item.titel}}</div><br/>
+        </span> 
+        <div (load)="getKeuzes()"></div>
+        <div *ngFor="let item of allKeuzes">
+            <button mat-button (click)="addStem(item.keuzeId)">{{item.naam}}</button>
+        </div>
+    </ng-container>
+    <ng-template #showBlock>
+        <div *ngFor="let item of gesorteerdeStemmen">
+            {{item.naam}} => {{item.aantal}}
+        </div>
+    </ng-template>
+    
+</div>

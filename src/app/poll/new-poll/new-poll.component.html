@@ -1,1 +1,68 @@
-<p>new-poll works!</p>
+<div class="backgroundimage">
+        <app-navigation></app-navigation>
+        <div class="jumbotron">
+<form class="form horizontalFlex" [formGroup]="newPollForm" (ngSubmit)="onSubmit()" >
+    <div>Poll
+        <p>
+            <mat-form-field style="width:100%">
+                <input matInput type="text" placeholder="Vraag" required formControlName="titel"/>
+            </mat-form-field>
+        </p>
+        
+        <div >Antwoorden: <br/>
+            <div id="antwoordenContainer">
+                <div id="antwoorden">
+                    <mat-form-field>
+                        <input matInput type="text" required formControlName="antwoord1"/>
+                    </mat-form-field><br/>
+                    <mat-form-field>
+                        <input matInput type="text" required formControlName="antwoord2" />
+                    </mat-form-field><br/>
+                    <div *ngFor="let arrayItem of arrayItems; let i=index">
+                        <mat-form-field>
+                            <input matInput type="text" [formControlName]="'antwoord'+(3+i)" />
+                        </mat-form-field><br/>
+                    </div>
+                    <p [hidden]="limit">Maximaal aantal opties bereikt</p>
+                </div>    
+
+                
+                <div id="antwoordenExtra">
+                    <div *ngFor="let arrayItem of arrayItemsEx; let i=index">
+                        <mat-form-field>
+                            <input matInput type="text" [formControlName]="'antwoord'+(6+i)" />
+                        </mat-form-field><br/>
+                    </div>
+                </div>   
+            </div> 
+        </div>
+        <button mat-button type="button" [disabled]="!limit" (click)="voegAntwoordToe()">+ Voeg antwoord toe</button>
+    <p><button mat-raised-button color="primary" type="submit" [disabled]="!newPollForm.valid">Maak poll</button></p>
+    </div>
+    <div id="vrienden">
+        VRIENDENLIJST<br/><br/>
+        <!--
+        <div *ngFor="let item of arrayVrienden; let i = index" class="vriendenlijst" formArrayName="vriendenArray">
+            <ng-container  *ngIf="checkLocalStorageUser(item.gebruiker1.email);else elseBlock">
+                <input class="checkbox" type="checkbox" value="{{item.gebruiker1.id}}"/>{{item.gebruiker2.email}}
+            </ng-container>
+        
+            <ng-template #elseBlock>
+                <input class="checkbox" type="checkbox" value="{{item.gebruiker1.id}}"/>{{item.gebruiker1.email}}
+            </ng-template>
+        </div>-->
+        <div *ngFor="let item of arrayVrienden; let i = index" class="vriendenlijst" formArrayName="vriendenArray">
+            <ng-container  *ngIf="checkLocalStorageUser(item.gebruiker1.email);else elseBlock">
+                <button mat-button type="button" id="gebruiker{{item.gebruiker2.gebruikerId}}" (click)=addFriend(item.gebruiker2.gebruikerId)>{{item.gebruiker2.email}}</button>
+            </ng-container>
+        
+            <ng-template #elseBlock>
+                <button mat-button type="button" id="gebruiker{{item.gebruiker1.gebruikerId}}" (click)=addFriend(item.gebruiker1.gebruikerId)>{{item.gebruiker1.email}}</button>
+            </ng-template>
+        </div>
+    </div>
+
+    
+</form>
+</div>
+</div>
