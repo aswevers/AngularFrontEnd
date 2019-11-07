@@ -1,0 +1,27 @@
+<div class="jumbotron backgroundimage">
+<form #registerForm="ngForm"(ngSubmit)="onSubmit()" class="form">
+        <p>
+            <mat-form-field>
+                <input matInput placeholder="Email" type="email" required [(ngModel)]="gebruikerLogin.email"
+                name="email" />
+            </mat-form-field>
+        </p>
+        <div>
+            <p>
+                <!--Type="password"-->
+                <mat-form-field>
+                <input matInput placeholder="Password" type="password" required (keyup)="setPW($event)" [(ngModel)]="gebruikerLogin.password" name="password"/>
+                </mat-form-field>
+            </p>
+            <p>
+                    <!--Type="password"-->
+                    <mat-form-field>
+                    <input matInput placeholder="Confirm password" type="password" required (keyup)="setCP($event)" name="conpassword"/>
+                    </mat-form-field>
+                </p>
+        </div>
+        <p><button [disabled]="!checkPasswords()" mat-raised-button color="primary" type="submit"  routerLinkActive="router-link-active" >Registreer</button></p>
+        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="backbtn">&lt; terug</a> </p>
+        <p><a [routerLink]="['/login']" routerLinkActive="router-link-active" class="backbtn">Ik heb al een account</a> </p>
+        </form>
+    </div>

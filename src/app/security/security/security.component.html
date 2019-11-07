@@ -1,14 +1,20 @@
-<form #securityForm="ngForm" (ngSubmit)="onSubmit()">
+<div class="jumbotron backgroundimage">
+<form #securityForm="ngForm" (ngSubmit)="onSubmit()" class="form">
         <p>
             <mat-form-field>
-            <input matInput placeholder="Email" type="text" required [(ngModel)]="gebruikerLogin.email"
+            <input matInput placeholder="Email" type="email" required [(ngModel)]="gebruikerLogin.email"
             name="email" />
             </mat-form-field>
         </p>
         <p>
+            <!--Type="password"-->
             <mat-form-field>
-            <input matInput placeholder="Password" type="text" required [(ngModel)]="gebruikerLogin.password" name="password"/>
+            <input matInput placeholder="Password" type="password" required [(ngModel)]="gebruikerLogin.password" name="password"/>
+            
             </mat-form-field>
-        </p>
-        <p><button mat-raised-button color="primary" type="submit">Submit</button></p>
+            <div [hidden]="wrong">Password or email incorrect</div>
+        <p><button mat-raised-button color="primary" type="submit">Log in</button></p>
+        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="backbtn">	&lt; Terug</a> </p>
+        <p><a [routerLink]="['/register']" routerLinkActive="router-link-active" class="backbtn">	Ik heb nog geen account</a> </p>
         </form>
+    </div>
