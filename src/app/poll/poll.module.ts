@@ -18,7 +18,7 @@ import { PollComponent } from './poll/poll.component';
     FormsModule,
     SharedModule,
     NavigationModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports:[
     NewPollComponent, MypollComponent, PollComponent

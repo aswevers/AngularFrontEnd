@@ -48,14 +48,14 @@ export class PollService {
     return this._httpClient.post<Pollgebruiker>("https://localhost:44369/api/PollGebruiker", pollGebruiker);
   }
 
-  deleteStemWhereKeuzeId(keuzeId:number){
-    return this._httpClient.delete<Stem>("https://localhost:44369/api/Stem/deleteStemWhereKeuzeId/" + keuzeId);
+  deleteStem(id:number){
+    return this._httpClient.delete<Stem>("https://localhost:44369/api/Stem/" + id);
   }
   deleteKeuze(id:number){
-    return this._httpClient.delete<Keuze>("https://localhost:44369/api/Keuze" + id);
+    return this._httpClient.delete<Keuze>("https://localhost:44369/api/Keuze/" + id);
   }
   deletePoll(id:number){
-    return this._httpClient.delete<Poll>("https://localhost:44369/api/Poll" + id);
+    return this._httpClient.delete<Poll>("https://localhost:44369/api/Poll/" + id);
   }
 
 

@@ -8,6 +8,7 @@ import { StemMetAantal } from '../models/stem-met-aantal.model';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { KeuzeApi } from '../models/keuze-api.model';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-poll',
@@ -26,6 +27,7 @@ export class PollComponent implements OnInit {
     poll: Poll;
   }[];
   allStemmen:{
+    stemId;
     keuzeId:number;
     keuze: Keuze;
     gebruikerId:number;
@@ -37,7 +39,7 @@ export class PollComponent implements OnInit {
   }[];
   totaalAantalStemmen:number;
   
-  constructor(private pollService:PollService, private router:Router) { 
+  constructor(private pollService:PollService, private router:Router, private location:Location) { 
     this.allKeuzes=[];
     this.allStemmen=[];
     this.gesorteerdeStemmen=[];
@@ -103,16 +105,15 @@ export class PollComponent implements OnInit {
   }
 
   deletePoll(){
-    this.allKeuzes.forEach(element => {
-      this.pollService.deleteStemWhereKeuzeId(element.keuzeId)
-      console.log("na stemmen deleten");
-      this.pollService.deleteKeuze(element.keuzeId)
-      console.log("na keuze deleted")
+    this.allStemmen.forEach(element=>{
+      this.pollService.deleteStem(element.stemId).subscribe();
     })
-    this.pollService.deletePoll(this.pollId);
-    console.log( this.pollService.deletePoll(this.pollId))
-    
-    this.router.navigate['/mypolls']
+    this.allKeuzes.forEach(element => {
+      this.pollService.deleteKeuze(element.keuzeId).subscribe();
+    })
+    this.pollService.deletePoll(this.pollId).subscribe();   
+    this.getStemmenByPollId(this.pollId); 
+    window.location.reload();
   }
 
 }
