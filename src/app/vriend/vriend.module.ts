@@ -4,11 +4,12 @@ import { FriendRequestsComponent } from './friend-requests/friend-requests.compo
 import { FriendPageComponent } from './friend-page/friend-page.component';
 import { NavigationModule } from '../navigation/navigation.module';
 import { SharedModule } from '../shared/shared.module';
+import { NewFriendComponent } from './new-friend/new-friend.component';
 
 
 
 @NgModule({
-  declarations: [FriendRequestsComponent, FriendPageComponent],
+  declarations: [FriendRequestsComponent, FriendPageComponent, NewFriendComponent],
   imports: [
     CommonModule,
     NavigationModule,

@@ -1,5 +1,9 @@
 <div class="backgroundimage">
     <app-navigation></app-navigation>
+    <p class="friend-title">Add a new friend</p>
+    <app-new-friend></app-new-friend>
+    <p class="friend-title">Friend requests:</p>
+    <div class="friendrequest" *ngIf="friendRequests.length == 0">Geen vriendschapsverzoeken</div>
     <div *ngFor="let request of friendRequests" >
         <app-friend-requests [request]="request"></app-friend-requests>
     </div>
