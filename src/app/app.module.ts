@@ -18,6 +18,9 @@ import { AuthGuard } from './security/guards/auth.guard';
 import { NewPollComponent } from './poll/new-poll/new-poll.component';
 import { PollModule } from './poll/poll.module';
 import { MypollComponent } from './poll/mypoll/mypoll.component';
+import { FriendPageComponent } from './vriend/friend-page/friend-page.component';
+import { Vriend } from './vriend/models/vriend.model';
+import { VriendModule } from './vriend/vriend.module';
 
 
 const appRoutes: Routes = [
@@ -27,6 +30,7 @@ const appRoutes: Routes = [
   {path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path:'newpoll', component: NewPollComponent, canActivate: [AuthGuard]},
   {path:'mypolls', component: MypollComponent, canActivate: [AuthGuard]},
+  {path:'friends', component: FriendPageComponent, canActivate: [AuthGuard]},
   ];
 
 @NgModule({
@@ -43,7 +47,7 @@ const appRoutes: Routes = [
     HomeModule,
     DashboardModule,
     PollModule,
-    
+    VriendModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

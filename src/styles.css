@@ -123,4 +123,23 @@ ul {
 
   }
 
+  .mat-badge-content{
+    background-color: rgb(0, 26, 255);
+    border: white 2px solid;
+    top: 1% !important;
+    left: 90%;
+    font-size: 8px;
+  }
+
+  .friendrequest{
+    background-color: #fff;
+    padding: 16px;
+    margin: 16px;
+    border: 2px dashed orange;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Staatliches', cursive;
+
+  }
+
 

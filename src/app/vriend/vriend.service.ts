@@ -13,4 +13,16 @@ export class VriendService {
   getVrienden(): Observable<Vriend> {
     return this._httpClient.get<Vriend>("https://localhost:44369/api/Vriend");
   }
+  
+  getPendingFriendRequests(id:number): Observable<Vriend[]>{
+    return this._httpClient.get<Vriend[]>("https://localhost:44369/api/Vriend/getPendingFriendRequests/" + id);
+  }
+
+  acceptRequest(id:number, vriend:Vriend){
+    return this._httpClient.put<Vriend>("https://localhost:44369/api/Vriend/" + id, vriend);
+  }
+
+  deleteRequest(id:number){
+    return this._httpClient.post<Vriend>("https://localhost:44369/api/Vriend/" ,id);
+  }
 }
