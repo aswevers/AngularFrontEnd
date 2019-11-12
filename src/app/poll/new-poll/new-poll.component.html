@@ -41,16 +41,6 @@
     </div>
     <div id="vrienden">
         VRIENDENLIJST<br/><br/>
-        <!--
-        <div *ngFor="let item of arrayVrienden; let i = index" class="vriendenlijst" formArrayName="vriendenArray">
-            <ng-container  *ngIf="checkLocalStorageUser(item.gebruiker1.email);else elseBlock">
-                <input class="checkbox" type="checkbox" value="{{item.gebruiker1.id}}"/>{{item.gebruiker2.email}}
-            </ng-container>
-        
-            <ng-template #elseBlock>
-                <input class="checkbox" type="checkbox" value="{{item.gebruiker1.id}}"/>{{item.gebruiker1.email}}
-            </ng-template>
-        </div>-->
         <div *ngFor="let item of arrayVrienden; let i = index" class="vriendenlijst" formArrayName="vriendenArray">
             <ng-container  *ngIf="checkLocalStorageUser(item.gebruiker1.email);else elseBlock">
                 <button mat-button type="button" id="gebruiker{{item.gebruiker2.gebruikerId}}" (click)=addFriend(item.gebruiker2.gebruikerId)>{{item.gebruiker2.email}}</button>

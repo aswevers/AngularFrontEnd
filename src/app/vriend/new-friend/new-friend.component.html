@@ -1,9 +1,13 @@
 <div>
-    <form class="friendrequest">
+    <form class="friendrequest" [formGroup]="friendForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
             <label>Voer een e-mailadres in:</label>
-            <input matInput type="email"/>
+            <input formControlName="email" required matInput type="email"/>
         </mat-form-field>
-        <button mat-raised-button type="submit">Verzenden</button>
+        <div>
+            <button mat-raised-button type="submit">Verzenden</button>
+            <div *ngIf="verzonden">Verzonden!</div>
+        </div>
+        
     </form>
 </div>

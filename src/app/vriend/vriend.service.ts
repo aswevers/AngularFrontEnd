@@ -23,6 +23,10 @@ export class VriendService {
   }
 
   deleteRequest(id:number){
-    return this._httpClient.post<Vriend>("https://localhost:44369/api/Vriend/" ,id);
+    return this._httpClient.delete<Vriend>("https://localhost:44369/api/Vriend/" + id);
+  }
+
+  sendRequest(email:string, userId:number){
+    return this._httpClient.post<Vriend>("https://localhost:44369/api/Vriend/sendRequest/" + email, userId);
   }
 }

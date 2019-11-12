@@ -138,8 +138,17 @@ ul {
     border: 2px dashed orange;
     display: flex;
     justify-content: space-between;
-    font-family: 'Staatliches', cursive;
 
   }
+
+  .friend-title{
+    padding: 16px;
+    font-family: 'Montserrat', sans-serif;
+    background-color: rgba(255, 255, 255, 0.527); 
+   }
+
+.newfriend{
+  padding: 16px;
+}
 
 

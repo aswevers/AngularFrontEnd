@@ -7,6 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { MatSidenavModule, MatListModule } from '@angular/material';
 import { NavigationModule } from '../navigation/navigation.module';
+import { FormsModule } from '@angular/forms';
 
 
 

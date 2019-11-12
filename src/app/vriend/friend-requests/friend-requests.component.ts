@@ -22,6 +22,7 @@ export class FriendRequestsComponent implements OnInit {
   }
 
   deleteRequest(){
+    console.log(this.request.id)
     this.vriendService.deleteRequest(this.request.id).subscribe();
     window.location.reload();
   }
