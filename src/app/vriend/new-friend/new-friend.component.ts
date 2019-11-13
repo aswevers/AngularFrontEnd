@@ -16,9 +16,7 @@ export class NewFriendComponent implements OnInit {
   verzonden:boolean=false;
   
   onSubmit() {
-    this.vriendService.sendRequest(this.friendForm.get("email").value, parseInt(localStorage.getItem('id'))).subscribe(result =>{
-      console.log(result.geaccepteerd)
-    });
+    this.vriendService.sendRequest(this.friendForm.get("email").value, parseInt(localStorage.getItem('id')));
     this.verzonden = true;
   }
   ngOnInit() {
