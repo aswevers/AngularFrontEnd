@@ -9,17 +9,40 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray, ValidatorFn
 })
 export class NewFriendComponent implements OnInit {
   
-  constructor(private fb: FormBuilder, private vriendService:VriendService) {}
+  constructor(private fb: FormBuilder, private vriendService:VriendService) {
+    this.vrienden=[];
+  }
   friendForm = this.fb.group({
     email: ['', Validators.required]
   })
   verzonden:boolean=false;
-  
+  vrienden:string[];
+  alBevriend:boolean=false;
+  getVrienden(){
+    var count = 0;
+    this.vriendService.getVriendenById(parseInt(localStorage.getItem("id"))).subscribe(element =>{
+      while(element[count]){
+        this.vrienden.push(element[count].gebruiker1.email)
+        this.vrienden.push(element[count].gebruiker2.email)
+        count++;
+      }
+    })
+  }
+
   onSubmit() {
-    this.vriendService.sendRequest(this.friendForm.get("email").value, parseInt(localStorage.getItem('id')));
-    this.verzonden = true;
+    console.log(this.vrienden)
+    if(this.vrienden.includes(this.friendForm.get("email").value)){
+      this.alBevriend = true;
+      this.verzonden = false;
+    }else{
+      this.vriendService.sendRequest(this.friendForm.get("email").value, parseInt(localStorage.getItem('id')));
+      this.verzonden = true;
+      this.alBevriend = false;
+    }
+    
   }
   ngOnInit() {
+    this.getVrienden();
   }
 
 }
