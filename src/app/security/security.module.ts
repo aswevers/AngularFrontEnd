@@ -5,11 +5,12 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule } from '@angular/router';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 
 @NgModule({
-  declarations: [SecurityComponent, RegisterComponent],
+  declarations: [SecurityComponent, RegisterComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     SharedModule,

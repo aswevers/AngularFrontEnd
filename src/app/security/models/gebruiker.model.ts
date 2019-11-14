@@ -7,10 +7,9 @@ export class Gebruiker {
     username:string;
     password:string;
 
-    constructor(gebruikerId:number, username:string, email:string, password:string){
+    constructor(gebruikerId:number, email:string, password:string){
         this.gebruikerId = gebruikerId;
         this.email = email;
         this.password = password;
-        this.username = username;
     }
 }

@@ -24,5 +24,9 @@ isLoggedIn() {
 getGebruiker(id:number){
   return this._httpClient.get<Gebruiker>("https://localhost:44369/api/Gebruiker/" + id);
 }
+
+changePassword(id:number, gebruiker:Gebruiker){
+  return this._httpClient.put<Gebruiker>("https://localhost:44369/api/Gebruiker/" + id, gebruiker);
+}
   
 }

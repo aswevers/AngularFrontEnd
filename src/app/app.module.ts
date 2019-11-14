@@ -21,6 +21,7 @@ import { MypollComponent } from './poll/mypoll/mypoll.component';
 import { FriendPageComponent } from './vriend/friend-page/friend-page.component';
 import { Vriend } from './vriend/models/vriend.model';
 import { VriendModule } from './vriend/vriend.module';
+import { ChangePasswordComponent } from './security/change-password/change-password.component';
 
 
 const appRoutes: Routes = [
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
   {path:'newpoll', component: NewPollComponent, canActivate: [AuthGuard]},
   {path:'mypolls', component: MypollComponent, canActivate: [AuthGuard]},
   {path:'friends', component: FriendPageComponent, canActivate: [AuthGuard]},
+  {path:'changepassword', component: ChangePasswordComponent, canActivate: [AuthGuard]},
   ];
 
 @NgModule({

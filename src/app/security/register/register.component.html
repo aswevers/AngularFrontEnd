@@ -2,9 +2,10 @@
 <form #registerForm="ngForm"(ngSubmit)="onSubmit()" class="form">
         <p>
             <mat-form-field>
-                <input matInput placeholder="Email" type="email" required [(ngModel)]="gebruikerLogin.email"
+                <input matInput placeholder="Email" type="email" (keyup)="checkEmail($event)" required [(ngModel)]="gebruikerLogin.email"
                 name="email" />
             </mat-form-field>
+            <span *ngIf="bestaatAl">Er bestaat al een account met dit email adres!</span>
         </p>
         <div>
             <p>
@@ -20,7 +21,7 @@
                     </mat-form-field>
                 </p>
         </div>
-        <p><button [disabled]="!checkPasswords()" mat-raised-button color="primary" type="submit"  routerLinkActive="router-link-active" >Registreer</button></p>
+        <p><button [disabled]="!checkPasswords() || bestaatAl" mat-raised-button color="primary" type="submit"  routerLinkActive="router-link-active" >Registreer</button></p>
         <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="backbtn">&lt; terug</a> </p>
         <p><a [routerLink]="['/login']" routerLinkActive="router-link-active" class="backbtn">Ik heb al een account</a> </p>
         </form>

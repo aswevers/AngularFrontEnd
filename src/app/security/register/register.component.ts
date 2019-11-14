@@ -19,11 +19,16 @@ export class RegisterComponent implements OnInit {
 
   gebruikerLogin: GebruikerLogin = new GebruikerLogin("", "");
 
-  constructor(private _authenticateService : RegisterService, private fb: FormBuilder, private router:Router) { }
+  constructor(private _authenticateService : RegisterService, private fb: FormBuilder, private router:Router) {
+    this.emails = [];
+
+    this.bestaatAl = false;
+   }
 
   pass:String ;
   cpass:String ;
-  
+  emails:{}[];
+  bestaatAl:boolean;
   setPW(event){
     this.pass =  event.target.value;
   }
@@ -39,6 +44,23 @@ export class RegisterComponent implements OnInit {
       false
     }
   }
+
+  getGebruikers(){
+    var count = 0;
+    this._authenticateService.getGebruikers().subscribe(element =>{
+      while (element[count]){
+        this.emails.push(element[count].email);
+        count++;
+      }
+    });
+  }
+  checkEmail(event){
+    if(this.emails.includes(event.target.value)){
+      this.bestaatAl = true;
+    }else{
+      this.bestaatAl = false;
+    }
+  }
   onSubmit() {
     this._authenticateService.register(this.gebruikerLogin).subscribe(result => {
       console.log(this.gebruikerLogin);
@@ -48,6 +70,7 @@ export class RegisterComponent implements OnInit {
   
 
   ngOnInit() {
+    this.getGebruikers();
   }
 
   

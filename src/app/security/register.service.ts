@@ -13,4 +13,9 @@ export class RegisterService {
 register(gebruikerLogin: GebruikerLogin): Observable<Gebruiker> {
   return this._httpClient.post<Gebruiker>("https://localhost:44369/api/Gebruiker", gebruikerLogin);
 }
+
+getGebruikers(){
+  return this._httpClient.get<Gebruiker>("https://localhost:44369/api/Gebruiker");
+
+}
 }
