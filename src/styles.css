@@ -270,7 +270,7 @@ body{
   font-size: 24px;
 }
 
-/*LOGIN*/
+/*LOGIN, REGISTRATION, PASSWORD CHANGE*/
 .form{
   background-color: #fafafa;
   padding: 24px 40px;
@@ -287,6 +287,10 @@ body{
 .btn-submit{
   background-color: #222233;
   color:#fff;
+}
+
+.form-title{
+  font-family: 'Exo', sans-serif;
 }
 
 
