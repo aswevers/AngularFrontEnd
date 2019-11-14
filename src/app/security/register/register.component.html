@@ -1,4 +1,4 @@
-<div class="jumbotron backgroundimage">
+<div class="home">
 <form #registerForm="ngForm"(ngSubmit)="onSubmit()" class="form">
         <p>
             <mat-form-field>
@@ -21,8 +21,8 @@
                     </mat-form-field>
                 </p>
         </div>
-        <p><button [disabled]="!checkPasswords() || bestaatAl" mat-raised-button color="primary" type="submit"  routerLinkActive="router-link-active" >Registreer</button></p>
-        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="backbtn">&lt; terug</a> </p>
-        <p><a [routerLink]="['/login']" routerLinkActive="router-link-active" class="backbtn">Ik heb al een account</a> </p>
+        <p><button [disabled]="!checkPasswords() || bestaatAl" mat-raised-button class="btn-submit" type="submit"  routerLinkActive="router-link-active" >Registreer</button></p>
+        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="login-backbtn">&lt; Terug</a> </p>
+        <p><a [routerLink]="['/login']" routerLinkActive="router-link-active" class="login-backbtn">Ik heb al een account</a> </p>
         </form>
     </div>

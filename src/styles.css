@@ -15,17 +15,8 @@
     color: white;
 }
 
-.form{
-    background-color: #fafafa;
-    padding: 24px 40px;
-    box-shadow: 0px 0px 8px 0px rgba(171,171,171,1);
-    border-radius: 8px;
-    margin-top: 24px;
-}
 
-.backbtn{
-    text-decoration: none;
-}
+
 
 .nav{
     background-color: rgb(255, 255, 255);
@@ -261,7 +252,7 @@ body{
 /*HOME*/
 .home{
   display: flex;
-  margin-top: 25% ;
+  margin-top: 22% ;
   align-items: center;
   flex-direction: column;
 }
@@ -280,7 +271,25 @@ body{
   width: 150px;
   font-family: 'Exo', sans-serif;
   font-size: 24px;
+}
 
+/*LOGIN*/
+.form{
+  background-color: #fafafa;
+  padding: 24px 40px;
+  box-shadow: 0px 0px 8px 0px rgba(171,171,171,1);
+  border-radius: 8px;
+  margin-top: 24px;
+}
+
+.login-backbtn{
+  text-decoration: none;
+  color: #222233;
+}
+
+.btn-submit{
+  background-color: #222233;
+  color:#fff;
 }
 
 

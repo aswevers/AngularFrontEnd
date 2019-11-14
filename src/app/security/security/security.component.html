@@ -1,4 +1,4 @@
-<div class="jumbotron backgroundimage">
+<div class="home">
 <form #securityForm="ngForm" (ngSubmit)="onSubmit()" class="form">
         <p>
             <mat-form-field>
@@ -13,8 +13,8 @@
             
             </mat-form-field>
             <div [hidden]="wrong">Password or email incorrect</div>
-        <p><button mat-raised-button color="primary" type="submit">Log in</button></p>
-        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="backbtn">	&lt; Terug</a> </p>
-        <p><a [routerLink]="['/register']" routerLinkActive="router-link-active" class="backbtn">	Ik heb nog geen account</a> </p>
+        <p><button mat-raised-button class="btn-submit" type="submit">Log in</button></p>
+        <p><a [routerLink]="['/']" routerLinkActive="router-link-active" class="login-backbtn">	&lt; Terug</a> </p>
+        <p><a [routerLink]="['/register']" routerLinkActive="router-link-active" class="login-backbtn">	Ik heb nog geen account</a> </p>
         </form>
     </div>
