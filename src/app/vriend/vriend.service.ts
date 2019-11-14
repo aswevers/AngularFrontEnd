@@ -75,6 +75,12 @@ export class VriendService {
         console.log(element)
       });
     });
+
+    this.sendMailTest(email).subscribe();
+  }
+
+  sendMailTest(email:string){
+    return this._httpClient.get<Vriend>("https://localhost:44369/api/Vriend/sendMail/" + email);
   }
 }
 
