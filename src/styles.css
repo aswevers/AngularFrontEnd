@@ -2,18 +2,8 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
-
-.backgroundimage{
-    background-image: url('assets/images/Jumbotron.png');
-    background-color: rgb(237, 208, 245);
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Exo:900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 .jumbotron{
     
@@ -150,5 +140,133 @@ ul {
 .newfriend{
   padding: 16px;
 }
+
+
+/*NIEUWE LAYOUT*/
+/*ALGEMEEN*/
+* {
+  box-sizing: border-box;
+}
+
+[class*="col-"] {
+  float: left;
+}
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 768px) {
+  /* For medium: */
+  .col-m-1 {width: 8.33%;}
+  .col-m-2 {width: 16.66%;}
+  .col-m-3 {width: 25%;}
+  .col-m-4 {width: 33.33%;}
+  .col-m-5 {width: 41.66%;}
+  .col-m-6 {width: 50%;}
+  .col-m-7 {width: 58.33%;}
+  .col-m-8 {width: 66.66%;}
+  .col-m-9 {width: 75%;}
+  .col-m-10 {width: 83.33%;}
+  .col-m-11 {width: 91.66%;}
+  .col-m-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 1100px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+body{
+  margin: 0 !important;
+  background-color:#223;
+  background-image:
+  radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+  radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+  radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px),
+  radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+}
+
+/*DASHBOARD*/
+
+.dashboard-title{
+  font-family: 'Staatliches', cursive;
+  color: #fff;
+  text-align: center;
+  font-size: 64px;
+  border-bottom: 1px dashed white;
+}
+
+.dashboard-description{
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
+  font-family: 'Exo', sans-serif;
+}
+
+.card-container{
+  display: inline;
+}
+
+.card{
+  background-color: #fff;
+  border-radius: 3px;
+  width: 250px;
+  height: 250px;
+  margin: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.card-title{
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+
+}
+
+.card-body{
+  width: 240px;
+  height: 160px;
+}
+
+.card-description{
+  font-family: 'Open Sans', sans-serif;
+
+}
+
 
 

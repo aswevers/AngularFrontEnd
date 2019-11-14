@@ -5,11 +5,12 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { NavigationModule } from '../navigation/navigation.module';
 import { NavigationComponent } from '../navigation/navigation/navigation.component';
+import { DashboardCardComponent } from './dashboard-card/dashboard-card.component';
 
 
 
 @NgModule({
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, DashboardCardComponent],
   imports: [
     CommonModule,
     SharedModule,

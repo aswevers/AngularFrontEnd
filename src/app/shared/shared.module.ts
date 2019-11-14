@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { MatFormFieldModule, MatInputModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatProgressBar, MatProgressBarModule, MatBadgeModule } from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatIconModule,
     FontAwesomeModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgbModule,
   ],
   exports:[
     CommonModule,
@@ -39,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     MatProgressBar,
     MatIconModule,
     FontAwesomeModule,
-    MatBadgeModule
+    MatBadgeModule,
+    NgbModule
   ]
 })
 export class SharedModule { }

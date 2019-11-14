@@ -18,16 +18,30 @@ export class DashboardComponent implements OnInit {
     geaccepteerd:boolean;
   }[];
 
+  cards:{
+    title:string;
+    description:string;
+    link:string;
+  }[];
+
   constructor(private dashboardService:DashboardService) {
     this.friendRequests=[];
+    this.cards = [];
    }
 
 
+   fillNavItem(){
+     this.cards.push({title:"Vrienden", description:"Voeg nieuwe vrienden toe", link:"friends"}, 
+     {title:"Nieuwe poll", description:"Maak een nieuwe poll aan", link:"newpoll"},
+     {title:"Mijn polls", description:"Polls die jij hebt aangemaakt of aan bent toegevoegd", link:"mypolls"},
+     {title:"Wachtwoord veranderen", description:"Verander je wachtwoord", link:"changepassword"},
+     {title:"Log uit", description:"Log je uit", link:""});
+     console.log(this.cards)
+   }
+
   ngOnInit() {
     this.getPendingFriendRequests();
-  }
-  logUit(){
-    localStorage.removeItem("token");
+    this.fillNavItem();
   }
 
   getPendingFriendRequests(){
