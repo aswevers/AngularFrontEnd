@@ -327,3 +327,10 @@ body{
   background-color:#fff;
 
 }
+
+.dashboard-card-new{
+  background-color: #000;
+  color: #fff;
+  width: 280px;
+  height: 200px;
+}

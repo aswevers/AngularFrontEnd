@@ -1,7 +1,10 @@
 <a class="card" routerLink="/{{itemlink}}" (click)="logUit()">
-    <div class="card-body">
-        <img src="https://loremflickr.com/280/200/friendship" />
+    <div *ngIf="pendingRequests != 0 && itemlink == 'friends'; else elseBlock" class="card-body">
+        <div class="dashboard-card-new">NEW</div>
     </div>
+    <ng-template #elseBlock>
+        <img src="https://loremflickr.com/280/200/friendship" />
+    </ng-template>
     <div class="card-head">
         <p class="card-title">{{itemtitel}}</p>
         <p class="card-description">{{itemdescription}}</p>

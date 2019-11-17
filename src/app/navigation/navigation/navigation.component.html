@@ -1,7 +1,10 @@
 <mat-toolbar class="nav">
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
                 <li>
-                    <button mat-button matBadge="new" routerLink="/friends">Vriendschapsverzoeken WIP</button>
+                    <button *ngIf="pendingRequests != 0; else elseButton" mat-button matBadge="{{pendingRequests}}" routerLink="/friends">Vriendschapsverzoeken WIP</button>
+                    <ng-template #elseButton>
+                        <button mat-button routerLink="/friends">Vriendschapsverzoeken WIP</button>
+                    </ng-template>
                 </li>
                 <li>
                     <button mat-button routerLink="/newpoll">Nieuwe poll WIP</button>

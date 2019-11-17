@@ -63,20 +63,18 @@ export class VriendService {
         gebruiker1 = element;
         gebruiker1.email = email;
         this.putGebruiker(gebruiker1.gebruikerId, gebruiker1).subscribe();
+        this.sendMailTest(email).subscribe();
       });
     });
     
+    //Huidige gebruiker ophalen
     this.getGebruiker(userId).subscribe(element=>{
-      console.log(element)
       gebruiker2 = element;
+      //vriend maken
       vriend = new Vriend(gebruiker1.gebruikerId, gebruiker2.gebruikerId, gebruiker1, gebruiker2, false);
-      console.log(vriend);
-      this.postVriend(vriend).subscribe(element =>{
-        console.log(element)
-      });
+      this.postVriend(vriend).subscribe();
     });
 
-    this.sendMailTest(email).subscribe();
   }
 
   sendMailTest(email:string){
