@@ -1,7 +1,7 @@
 <div *ngFor="let friend of friends">
-    <div>
-        <div *ngIf="friend.gebruiker2.email == loggedIn; else elseBlock">{{friend.gebruiker1.email}}</div>
-        <ng-template #elseBlock>{{friend.gebruiker2.email}}</ng-template>
-        <button mat-button (click)="deleteFriend(friend.id)">Delete</button>
-    </div>
+    <div class="friend-list">
+        <div *ngIf="friend.gebruiker2.email == loggedIn; else elseBlock">{{friend.gebruiker1.email}}  ~  </div>
+        <ng-template #elseBlock>{{friend.gebruiker2.email}}  ~  </ng-template>
+        <button mat-button class="btn-submit-inverted" (click)="deleteFriend(friend.id)">Delete</button>
+    </div><br/>
 </div>

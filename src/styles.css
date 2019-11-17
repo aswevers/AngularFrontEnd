@@ -57,9 +57,6 @@ ul {
       padding-right: 10px;
   }
 
-  .horizontalFlex{
-      display: flex;
-  }
 
   #vrienden{
       border-left: lightgray dashed 1.5px;
@@ -73,22 +70,8 @@ ul {
     font-family: 'Montserrat', sans-serif;
   }
 
-  .poll{
-    background-color: #fff;
-    text-align: left;
-    margin: 5% 20%;
-    padding: 10px;  
-    border: 2px solid orange;
-  }
-  .checked{
-      background-color: lightgreen;
-  }
+ 
 
-  .titel{
-    font-family: 'Staatliches', cursive;
-    border-bottom: 2px dashed orange;
-
-  }
 
   .mat-badge-content{
     background-color: rgb(0, 26, 255);
@@ -98,20 +81,12 @@ ul {
     font-size: 8px;
   }
 
-  .friendrequest{
-    background-color: #fff;
-    padding: 16px;
-    margin: 16px;
-    border: 2px dashed orange;
-    display: flex;
-    justify-content: space-between;
 
-  }
 
   .friend-title{
+    color: #fff;
     padding: 16px;
     font-family: 'Montserrat', sans-serif;
-    background-color: rgba(255, 255, 255, 0.527); 
    }
 
 .newfriend{
@@ -249,9 +224,13 @@ body{
 /*HOME*/
 .home{
   display: flex;
-  margin-top: 22% ;
+  margin-top: 12% ;
   align-items: center;
   flex-direction: column;
+}
+
+.dashboard-row{
+  margin: -14px;
 }
 
 .home-title{
@@ -293,4 +272,58 @@ body{
   font-family: 'Exo', sans-serif;
 }
 
+/*NEW POLL*/
 
+.horizontalFlex{
+  display: flex;
+  width: auto;
+}
+
+.form-position{
+  display: flex;
+  margin-top: 12%;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.checked{
+  background-color: #424251;
+  color: #fff;
+}
+
+/* MY POLLS*/
+
+.poll{
+  background-color: #fff;
+  text-align: left;
+  margin: 5% 20%;
+  padding: 10px;  
+  border: 2px solid #aaa;
+}
+
+.titel{
+  font-family: 'Staatliches', cursive;
+  border-bottom: 2px dashed #aaa;
+
+}
+
+.friendrequest{
+  background-color: #fff;
+  padding: 16px;
+  margin: 16px;
+  border: 2px dashed #aaa;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.friend-list{
+  color: #fff;
+}
+
+.btn-submit-inverted{
+  color: #222233;
+  background-color:#fff;
+
+}

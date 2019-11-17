@@ -1,7 +1,7 @@
 <div><br/>
     <h1 class="dashboard-title">Welkom bij North Poll!</h1>
     <p class="dashboard-description">Kies hieronder wat je wilt doen!</p>
-    <span   class="row">
+    <span   class="row dashboard-row">
         <span *ngFor="let item of cards">
             <app-dashboard-card [itemtitel]="item.title" [itemdescription]="item.description" [itemlink]="item.link" class="col-3 col-s-12 col-m-6"></app-dashboard-card>
         </span> 
