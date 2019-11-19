@@ -18,43 +18,47 @@ export class PollService {
   constructor(private _httpClient: HttpClient) { }
   addPoll(poll: Newpoll): Observable<Poll> {
     return this._httpClient.post<Poll>("https://localhost:44369/api/Poll", poll);
-    }
-  addKeuze(keuze:Keuze): Observable<Keuze>{
-      return this._httpClient.post<Keuze>("https://localhost:44369/api/Keuze",keuze);
-    }
-    getKeuzes(){
-      return this._httpClient.get<Keuze>("https://localhost:44369/api/Keuze");
-    }
-    getKeuzesByPollId(id:number){
-      return this._httpClient.get<Keuze>("https://localhost:44369/api/Keuze/getKeuzesByPollId/" + id);
-    }
-  getPolls(){
+  }
+  addKeuze(keuze: Keuze): Observable<Keuze> {
+    return this._httpClient.post<Keuze>("https://localhost:44369/api/Keuze", keuze);
+  }
+  getKeuzes() {
+    return this._httpClient.get<Keuze>("https://localhost:44369/api/Keuze");
+  }
+  getKeuzesByPollId(id: number) {
+    return this._httpClient.get<Keuze>("https://localhost:44369/api/Keuze/getKeuzesByPollId/" + id);
+  }
+  getPolls() {
     return this._httpClient.get<Poll>("https://localhost:44369/api/Poll");
   }
 
-  getStemmen(){
+  getPollsWhereGebruiker(gebruikerId: number) {
+    return this._httpClient.get<Pollgebruiker>("https://localhost:44369/api/PollGebruiker/getPGWhereGebruiker/" + gebruikerId);
+  }
+
+  getStemmen() {
     return this._httpClient.get<Stem>("https://localhost:44369/api/Stem");
   }
-  
-  getStemmenByPollId(id:number){
+
+  getStemmenByPollId(id: number) {
     return this._httpClient.get<Stem>("https://localhost:44369/api/Stem/getStemmenByPollId/" + id);
   }
 
-  addStem(stem:Stem){
+  addStem(stem: Stem) {
     return this._httpClient.post<Stem>("https://localhost:44369/api/Stem", stem);
   }
 
-  addPollGebruiker(pollGebruiker: Pollgebruiker){
+  addPollGebruiker(pollGebruiker: Pollgebruiker) {
     return this._httpClient.post<Pollgebruiker>("https://localhost:44369/api/PollGebruiker", pollGebruiker);
   }
 
-  deleteStem(id:number){
+  deleteStem(id: number) {
     return this._httpClient.delete<Stem>("https://localhost:44369/api/Stem/" + id);
   }
-  deleteKeuze(id:number){
+  deleteKeuze(id: number) {
     return this._httpClient.delete<Keuze>("https://localhost:44369/api/Keuze/" + id);
   }
-  deletePoll(id:number){
+  deletePoll(id: number) {
     return this._httpClient.delete<Poll>("https://localhost:44369/api/Poll/" + id);
   }
 

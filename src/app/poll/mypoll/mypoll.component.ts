@@ -23,11 +23,12 @@ export class MypollComponent implements OnInit, OnChanges {
 
   getPolls(){
     var teller = 0;
-    this.pollService.getPolls().forEach(element =>{
+    this.pollService.getPollsWhereGebruiker(parseInt(localStorage.getItem("id"))).forEach(element =>{
       while (element[teller]){
         this.allPolls.push(element[teller])
         teller++;
       }
+      console.log(this.allPolls)
     });
   }
 
