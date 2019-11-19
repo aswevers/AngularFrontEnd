@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { PollService } from '../poll.service';
 import { Poll } from '../models/poll.model';
 import { Keuze } from '../models/keuze.model';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './mypoll.component.html',
   styleUrls: ['./mypoll.component.css']
 })
-export class MypollComponent implements OnInit, AfterViewInit {
+export class MypollComponent implements OnInit, OnChanges {
   allPolls:{
     pollId:number;
     titel:string;
@@ -28,17 +28,18 @@ export class MypollComponent implements OnInit, AfterViewInit {
         this.allPolls.push(element[teller])
         teller++;
       }
-    })
-    this.router.navigate['/mypolls']
+    });
   }
 
   
-  ngAfterViewInit() {
+  ngOnChanges() {
+    
+  }
+
+  ngOnInit(){    
     this.getPolls()
-  }
-
-  ngOnInit(){
 
   }
+
 
 }

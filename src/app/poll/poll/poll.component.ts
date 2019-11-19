@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Keuze } from '../models/keuze.model';
 import { PollService } from '../poll.service';
 import { Stem } from '../models/stem.model';
@@ -15,7 +15,7 @@ import {Location} from '@angular/common'
   templateUrl: './poll.component.html',
   styleUrls: ['./poll.component.css']
 })
-export class PollComponent implements OnInit {
+export class PollComponent implements OnInit, OnChanges {
   faTrash = faTrash;
   @Input() item: Keuze;
   @Input() pollId: number;
@@ -46,6 +46,10 @@ export class PollComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
+
     this.getKeuzesByPollId(this.pollId);
     this.getStemmenByPollId(this.pollId);
   }
@@ -55,7 +59,7 @@ export class PollComponent implements OnInit {
     this.pollService.addStem(stem).subscribe();
     this.voted = true;
     this.getKeuzesByPollId(this.pollId);
-    this.sortStemmen();
+    this.getStemmenByPollId(this.pollId);
   }
 
   getStemmenByPollId(pollId:number){
@@ -63,9 +67,14 @@ export class PollComponent implements OnInit {
     this.pollService.getStemmenByPollId(pollId).forEach(element=>{
       while(element[count]){
         this.allStemmen.push(element[count])
+        if(element[count].gebruikerId == parseInt(localStorage.getItem('id'))){
+          this.voted = true;
+        }
         count++;
       }
-    })
+      this.sortStemmen();
+    });
+    
   }
 
   getKeuzesByPollId(pollId:number){
@@ -79,7 +88,7 @@ export class PollComponent implements OnInit {
   }
 
   sortStemmen(){
-    var aantal=1;
+    var aantal=0;
     this.allStemmen.sort()
     var titel = this.allStemmen[0].keuze.naam;
     for(var i=0; i < this.allStemmen.length; i++){
@@ -88,7 +97,7 @@ export class PollComponent implements OnInit {
       }
       else{
           this.gesorteerdeStemmen.push(new StemMetAantal(titel, aantal))
-          aantal=1;
+          aantal=0;
           titel = this.allStemmen[i].keuze.naam
       }
     }
@@ -101,7 +110,7 @@ export class PollComponent implements OnInit {
   }
   
   setTotaalAantalStemmen(aantal:number){
-    return this.allStemmen.length+1
+    return this.allStemmen.length
   }
 
   deletePoll(){

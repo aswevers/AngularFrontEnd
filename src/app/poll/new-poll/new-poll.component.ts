@@ -30,7 +30,7 @@ export class NewPollComponent implements OnInit {
     antwoord7: [''],
     antwoord8: [''],
     antwoord9: [''],
-    antwoord10: ['']
+    antwoord10: [''],
     });
     
     teller: number = 2;
@@ -60,6 +60,7 @@ export class NewPollComponent implements OnInit {
       antwoordenArrayEx: this.fb.array([]),
       vriendenArray: this.fb.array([])
     })
+    this.vriendent = [];
    }
 
   voegAntwoordToe(){
@@ -86,27 +87,33 @@ export class NewPollComponent implements OnInit {
           this.antwoordex  = new Keuze(this.newPollForm.get('antwoord' + i).value, result.pollId,);
           this.pollservice.addKeuze(this.antwoordex).subscribe();
         }
+      }  
+      for(let i=0; i<this.vriendent.length;i++){
+        var pg = new Pollgebruiker(result.pollId, this.vriendent[i], false);
+        console.log("i= " + i)
+        console.log(this.vriendent[i])
+        console.log(pg)
+        this.pollservice.addPollGebruiker(pg).subscribe();
       }
-      
+      this.pollservice.addPollGebruiker(new Pollgebruiker(result.pollId, parseInt(localStorage.getItem("id")), true)).subscribe();
     });
 
-    for(var i; i<=this.vriendent.length;i++){
-      var pg = new Pollgebruiker(this.pollId, this.vriendent[i], false);
-      this.pollservice.addPollGebruiker(pg);
-    }
-    this.pollservice.addPollGebruiker(new Pollgebruiker(this.pollId, parseInt(localStorage.getItem("id")), true));
-    this.router.navigate(['/mypolls']);
+    
+    this.router.navigateByUrl('/mypolls');
 
   }
 
   addFriend(id:number){
     var btn = document.getElementById('gebruiker' + id);
+    console.log(btn)
+    console.log(id)
     if(btn.classList.contains("checked")){
       btn.classList.remove("checked");
       this.vriendent.splice(this.vriendent.indexOf(id), 1);
     }else{
       btn.classList.add("checked");
       this.vriendent.push(id);
+      console.log(this.vriendent)
     }
   }
 

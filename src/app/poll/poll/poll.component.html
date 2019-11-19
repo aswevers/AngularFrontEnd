@@ -1,7 +1,7 @@
 <div class="poll"> 
         <span>
             <div class="titel">{{item.titel}}</div>
-            <button (click)="deletePoll()" mat-button *ngIf="!heeftAangemaakt"><fa-icon [icon]="faTrash"></fa-icon></button>
+            <button (click)="deletePoll()" mat-button *ngIf="!item.heeftAangemaakt"><fa-icon [icon]="faTrash"></fa-icon></button>
         </span> 
     <ng-container *ngIf="!voted; else showBlock">
         
