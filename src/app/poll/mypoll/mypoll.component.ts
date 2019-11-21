@@ -16,17 +16,35 @@ export class MypollComponent implements OnInit, OnChanges {
     pollId:number;
     titel:string;
   }[];
+  allPollsAangemaakt:{
+    pollId:number;
+    titel:string;
+  }[];
+  allPollRequests:{
+    pollId:number;
+    titel:string;
+  }[];
 
   constructor(private pollService:PollService, private router:Router) { 
     this.allPolls=[];
+    this.allPollRequests=[];
+    this.allPollsAangemaakt=[];
   }
 
   getPolls(){
     var teller = 0;
     this.pollService.getPollsWhereGebruiker(parseInt(localStorage.getItem("id"))).forEach(element =>{
       while (element[teller]){
-        this.allPolls.push(element[teller])
-        teller++;
+        if(element[teller].heeftAangemaakt == true){
+          this.allPollsAangemaakt.push(element[teller])
+          teller++;
+        }else if (element[teller].heeftGeaccepteerd == false){
+          this.allPollRequests.push(element[teller])
+          teller++;
+        }else{
+          this.allPolls.push(element[teller])
+          teller++;
+        }
       }
       console.log(this.allPolls)
     });

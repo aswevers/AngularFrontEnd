@@ -1,18 +1,20 @@
 <div class="poll"> 
         <span>
-            <div class="titel">{{item.titel}}</div>
-            <button (click)="deletePoll()" mat-button *ngIf="!item.heeftAangemaakt"><fa-icon [icon]="faTrash"></fa-icon></button>
+            <div class="titel">{{item.poll.titel}}</div>
+            <button (click)="deletePoll()" mat-button *ngIf="heeftAangemaaktBool"><fa-icon [icon]="faTrash"></fa-icon></button>
+            <button (click)="acceptPollRequest()" mat-button *ngIf="!heeftGeaccepteerdBool"><fa-icon [icon]="faTrash"></fa-icon>accept</button>
         </span> 
+        
     <ng-container *ngIf="!voted; else showBlock">
         
         <div (load)="getKeuzes()"></div>
-        <div *ngFor="let item of allKeuzes">
-            <button mat-button (click)="addStem(item.keuzeId)">{{item.naam}}</button>
+        <div *ngFor="let keuze of allKeuzes">
+            <button mat-button [disabled]="!heeftGeaccepteerdBool" (click)="addStem(keuze.keuzeId)">{{keuze.naam}}</button>
         </div>
     </ng-container>
     <ng-template #showBlock>
-        <div *ngFor="let item of gesorteerdeStemmen" class="vriendenlijst">
-            {{item.naam}} ~ {{item.aantal}} / {{setTotaalAantalStemmen()}}
+        <div *ngFor="let stem of gesorteerdeStemmen" class="vriendenlijst">
+            {{stem.naam}} ~ {{stem.aantal}} / {{setTotaalAantalStemmen()}}
             <mat-progress-bar mode="determinate" value="{{item.aantal/100*setTotaalAantalStemmen()}}"></mat-progress-bar>
         </div>
     </ng-template>

@@ -89,18 +89,15 @@ export class NewPollComponent implements OnInit {
         }
       }  
       for(let i=0; i<this.vriendent.length;i++){
-        var pg = new Pollgebruiker(result.pollId, this.vriendent[i], false);
+        var pg = new Pollgebruiker(result.pollId, this.vriendent[i], false, false);
         console.log("i= " + i)
         console.log(this.vriendent[i])
         console.log(pg)
         this.pollservice.addPollGebruiker(pg).subscribe();
       }
-      this.pollservice.addPollGebruiker(new Pollgebruiker(result.pollId, parseInt(localStorage.getItem("id")), true)).subscribe();
-    });
-
-    
-    this.router.navigateByUrl('/mypolls');
-
+      this.pollservice.addPollGebruiker(new Pollgebruiker(result.pollId, parseInt(localStorage.getItem("id")), true, true)).subscribe();
+      this.router.navigate(['/mypolls']);
+    });    
   }
 
   addFriend(id:number){

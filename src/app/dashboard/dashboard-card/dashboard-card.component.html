@@ -1,6 +1,9 @@
 <a class="card" routerLink="/{{itemlink}}" (click)="logUit()">
-    <div *ngIf="pendingRequests != 0 && itemlink == 'friends'; else elseBlock" class="card-body">
-        <div class="dashboard-card-new">NEW</div>
+    <div *ngIf="pendingFriends != 0 && itemlink == 'friends'; else elseBlock" class="card-body">
+        <div class="dashboard-card-new">Nieuwe verzoeken!</div>
+    </div>
+    <div *ngIf="pendingPolls != 0 && itemlink == 'mypolls'; else elseBlock" class="card-body">
+        <div class="dashboard-card-new">Nieuwe uitnodigingen!</div>
     </div>
     <ng-template #elseBlock>
         <img src="https://loremflickr.com/280/200/friendship" />

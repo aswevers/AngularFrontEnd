@@ -1,9 +1,17 @@
 <div class="backgroundimage">
     <app-navigation></app-navigation>
     <div >
-        
+        <p class="friend-title">Jouw polls</p>
+        <div *ngFor="let item of allPollsAangemaakt">
+            <app-poll [item]="item" [heeftAangemaaktBool]="item.heeftAangemaakt" [heeftGeaccepteerdBool]="item.heeftGeaccepteerd" [pollId]="item.pollId" ></app-poll>
+        </div>
+        <p class="friend-title">Uitnodigingen</p>
+        <div *ngFor="let item of allPollRequests">
+            <app-poll [item]="item" [heeftAangemaaktBool]="item.heeftAangemaakt" [heeftGeaccepteerdBool]="item.heeftGeaccepteerd" [pollId]="item.pollId" ></app-poll>
+        </div>
+        <p class="friend-title">Polls van je vrienden</p>
         <div *ngFor="let item of allPolls">
-            <app-poll [item]="item.poll" [pollId]="item.pollId" ></app-poll>
+            <app-poll [item]="item" [heeftAangemaaktBool]="item.heeftAangemaakt" [heeftGeaccepteerdBool]="item.heeftGeaccepteerd" [pollId]="item.pollId" ></app-poll>
         </div>
     </div>
 </div>

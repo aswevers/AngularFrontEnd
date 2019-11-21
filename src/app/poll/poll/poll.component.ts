@@ -9,6 +9,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { KeuzeApi } from '../models/keuze-api.model';
 import {Location} from '@angular/common'
+import { Pollgebruiker } from '../models/pollgebruiker.model';
 
 @Component({
   selector: 'app-poll',
@@ -17,8 +18,10 @@ import {Location} from '@angular/common'
 })
 export class PollComponent implements OnInit, OnChanges {
   faTrash = faTrash;
-  @Input() item: Keuze;
+  @Input() item: Pollgebruiker;
   @Input() pollId: number;
+  @Input() heeftAangemaaktBool: boolean;
+  @Input() heeftGeaccepteerdBool: boolean;
   voted:boolean = false;
   allKeuzes:{
     naam:string;
@@ -122,6 +125,13 @@ export class PollComponent implements OnInit, OnChanges {
     })
     this.pollService.deletePoll(this.pollId).subscribe();   
     this.getStemmenByPollId(this.pollId); 
+    window.location.reload();
+  }
+
+  acceptPollRequest(){
+    var pollGebruiker = this.item;
+    pollGebruiker.heeftGeaccepteerd = true;
+    this.pollService.putPollGebruiker(pollGebruiker.pollGebruikerId, pollGebruiker).subscribe();
     window.location.reload();
   }
 

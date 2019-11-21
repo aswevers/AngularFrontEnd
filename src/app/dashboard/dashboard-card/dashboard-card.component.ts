@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { Gebruiker } from 'src/app/security/models/gebruiker.model';
+import { PollService } from 'src/app/poll/poll.service';
 
 @Component({
   selector: 'app-dashboard-card',
@@ -11,12 +12,12 @@ export class DashboardCardComponent implements OnInit {
   @Input() itemtitel:string;
   @Input() itemdescription:string;
   @Input() itemlink:string;
-  constructor(private dashboardService:DashboardService) { 
+  constructor(private dashboardService:DashboardService, private pollService: PollService) { 
     this.friendRequests=[];
 
   }
 
-  pendingRequests:number = 0;
+  pendingFriends:number = 0;
   friendRequests:{
     gebruiker1Id:number;
     gebruiker2Id:number;
@@ -24,9 +25,10 @@ export class DashboardCardComponent implements OnInit {
     gebruiker2:Gebruiker;
     geaccepteerd:boolean;
   }[];
+  pendingPolls:number=0;
   ngOnInit() {
     this.getPendingFriendRequests();
-
+    this.getPollRequests();
   }
   
   logUit(){
@@ -43,8 +45,20 @@ export class DashboardCardComponent implements OnInit {
         this.friendRequests.push(element[count]);
         count++;
       };
-     this.pendingRequests = count;
+     this.pendingFriends = count;
     });
+  }
+
+  getPollRequests(){
+    var count = 0;
+    this.pollService.getPollsWhereGebruiker(parseInt(localStorage.getItem("id"))).subscribe(result =>{
+      while(result[count]){
+        if(!result[count].heeftGeaccepteerd){
+          this.pendingPolls++;
+        }
+        count++;
+      }
+    })
   }
 
 

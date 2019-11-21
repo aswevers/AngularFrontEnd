@@ -31,7 +31,6 @@ export class NewFriendComponent implements OnInit {
 
   onSubmit() {
     var email = this.friendForm.get("email").value;
-    console.log(this.vrienden)
     if(this.vrienden.includes(email)){
       this.alBevriend = true;
       this.verzonden = false;

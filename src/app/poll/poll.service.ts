@@ -32,6 +32,10 @@ export class PollService {
     return this._httpClient.get<Poll>("https://localhost:44369/api/Poll");
   }
 
+  getPoll(id:number){
+    return this._httpClient.get<Poll>("https://localhost:44369/api/Poll/" + id);
+  }
+
   getPollsWhereGebruiker(gebruikerId: number) {
     return this._httpClient.get<Pollgebruiker>("https://localhost:44369/api/PollGebruiker/getPGWhereGebruiker/" + gebruikerId);
   }
@@ -61,6 +65,10 @@ export class PollService {
   deletePoll(id: number) {
     return this._httpClient.delete<Poll>("https://localhost:44369/api/Poll/" + id);
   }
+  putPollGebruiker(id: number, poll:Pollgebruiker) {
+    return this._httpClient.put<Pollgebruiker>("https://localhost:44369/api/PollGebruiker/" + id, poll);
+  }
+  
 
 
 
