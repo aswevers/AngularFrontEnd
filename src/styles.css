@@ -329,8 +329,9 @@ body{
 }
 
 .dashboard-card-new{
-  background-color: #000;
-  color: #fff;
+  background-color: rgb(178, 216, 228);
+  color: #262658;
   width: 280px;
   height: 200px;
+  font-size: 32px;
 }
