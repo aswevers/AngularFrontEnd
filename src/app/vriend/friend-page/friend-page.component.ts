@@ -18,6 +18,7 @@ export class FriendPageComponent implements OnInit {
     this.getPendingRequests();
   }
 
+  //Haalt alle vriend objecten op van de ingelogde gebruiker waar hij gebruiker1 is en HeeftGeaccepteerd = false
   getPendingRequests(){
     this.vriendService.getPendingFriendRequests(parseInt(localStorage.getItem("id"))).subscribe(element=>{
       element.forEach(item =>{

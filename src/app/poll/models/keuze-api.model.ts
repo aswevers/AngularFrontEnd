@@ -1,3 +1,4 @@
+//Model om Keuze naar de API te kunnen schrijven
 import { Poll } from './poll.model';
 
 export class KeuzeApi {

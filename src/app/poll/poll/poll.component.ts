@@ -57,6 +57,7 @@ export class PollComponent implements OnInit, OnChanges {
     this.getStemmenByPollId(this.pollId);
   }
   
+  //Voegt een stem toe
   addStem(keuzeId:number){
     var stem = new Stem(keuzeId, parseInt(localStorage.getItem('id')));
     this.pollService.addStem(stem).subscribe();
@@ -65,6 +66,7 @@ export class PollComponent implements OnInit, OnChanges {
     this.getStemmenByPollId(this.pollId);
   }
 
+  //Haalt alle stemmen van een bepaalde poll op
   getStemmenByPollId(pollId:number){
     var count = 0;
     this.pollService.getStemmenByPollId(pollId).forEach(element=>{
@@ -80,6 +82,7 @@ export class PollComponent implements OnInit, OnChanges {
     
   }
 
+  //Haalt alle mogelijke antwoorden van een poll op
   getKeuzesByPollId(pollId:number){
     var count = 0;
     this.pollService.getKeuzesByPollId(pollId).forEach(element=>{
@@ -90,6 +93,7 @@ export class PollComponent implements OnInit, OnChanges {
     })
   }
 
+  //Sorteert de stemmen per naam en voegt het aantal toe. Vervolgens wordt de keuze met de meeste stemmen als eerste geplaatst
   sortStemmen(){
     var aantal=0;
     this.allStemmen.sort()
@@ -112,10 +116,12 @@ export class PollComponent implements OnInit, OnChanges {
     })
   }
   
+  //Telt het totaal aantal stemmen op een poll
   setTotaalAantalStemmen(aantal:number){
     return this.allStemmen.length
   }
 
+  //Verwijdert een poll, alle bijhorende keuzes, stemmen en pollgebruiker relaties
   deletePoll(){
     this.allStemmen.forEach(element=>{
       this.pollService.deleteStem(element.stemId).subscribe();
@@ -128,6 +134,7 @@ export class PollComponent implements OnInit, OnChanges {
     window.location.reload();
   }
 
+  //Accepteert een uitnodiging voor een poll zodat de ingelogde gebruiker kan stemmen
   acceptPollRequest(){
     var pollGebruiker = this.item;
     pollGebruiker.heeftGeaccepteerd = true;

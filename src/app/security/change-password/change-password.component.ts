@@ -24,14 +24,17 @@ export class ChangePasswordComponent implements OnInit {
   pass:String ;
   cpass:String ;
   
+  //Haalt eerste wachtwoord input veld value op
   setPW(event){
     this.pass =  event.target.value;
   }
   
+  //Haalt tweede wachtwoord input veld value op
   setCP(event){
     this.cpass =  event.target.value;
   }
   
+  //Controleert dat de twee waardes hetzelfde zijn
   checkPasswords(){
     if(this.pass == this.cpass){
       return true;
@@ -40,6 +43,7 @@ export class ChangePasswordComponent implements OnInit {
     }
   }
 
+  //Verandert wachtwoord
   onSubmit() {
     this._authenticateService.changePassword(parseInt(localStorage.getItem("id")), this.gebruiker).subscribe(result => {
       this.router.navigate(['/login']);

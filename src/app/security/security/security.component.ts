@@ -21,12 +21,12 @@ export class SecurityComponent implements OnInit {
     this.wrong = true;
    }
   
+   //Logt gebruiker in en plaats gegevens in localStorage
   onSubmit() {
     this._authenticateService.authenticate(this.gebruikerLogin).subscribe(result => {
       localStorage.setItem("token", result.token + "");
       localStorage.setItem("user", result.email + "");
       localStorage.setItem("id", result.gebruikerId + "");
-      console.log(result);
       this._authenticateService.isLoggedin.next(result.token ? true : false);
       this.router.navigate(['/dashboard']);
     }, err => {

@@ -15,12 +15,14 @@ export class FriendRequestsComponent implements OnInit {
   ngOnInit() {
   }
 
+  //Accepteerd vriendschapsverzoek
   acceptRequest(){
     this.request.geaccepteerd = true;
     this.vriendService.acceptRequest(this.request.id, this.request).subscribe();
     window.location.reload();
   }
 
+  //Verwijdert vriendobject
   deleteRequest(){
     console.log(this.request.id)
     this.vriendService.deleteRequest(this.request.id).subscribe();

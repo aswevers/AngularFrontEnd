@@ -1,3 +1,4 @@
+//Model om polls in het component te gebruiken
 export class Poll {
     pollId:number;
     titel:string;

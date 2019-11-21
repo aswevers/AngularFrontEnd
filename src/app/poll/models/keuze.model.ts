@@ -1,3 +1,4 @@
+//Model om keuze op te halen en de gebruiker in de componenten
 import { Poll } from './poll.model';
 
 export class Keuze {

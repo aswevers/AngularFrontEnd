@@ -18,6 +18,8 @@ export class NewFriendComponent implements OnInit {
   verzonden:boolean=false;
   vrienden:string[];
   alBevriend:boolean=false;
+
+  //Haalt alle vrienden van de ingelogde gebruiker op
   getVrienden(){
     var count = 0;
     this.vriendService.getVriendenById(parseInt(localStorage.getItem("id"))).subscribe(element =>{
@@ -29,6 +31,7 @@ export class NewFriendComponent implements OnInit {
     })
   }
 
+  //Kijkt of de gebruiker al bevriend is met dit email adres, zo niet verzend hij het verzoek.
   onSubmit() {
     var email = this.friendForm.get("email").value;
     if(this.vrienden.includes(email)){

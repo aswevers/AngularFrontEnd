@@ -1,3 +1,4 @@
+//Model dat toont hoeveel stemmen een bepaalde keuze heeft
 export class StemMetAantal {
     naam:string;
     aantal:number;

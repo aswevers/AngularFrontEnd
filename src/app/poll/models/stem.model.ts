@@ -1,3 +1,4 @@
+//Model om stem te gebruiken in de componenten
 import { Keuze } from './keuze.model';
 import { Gebruiker } from 'src/app/security/models/gebruiker.model';
 

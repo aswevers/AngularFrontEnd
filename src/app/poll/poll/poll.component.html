@@ -2,7 +2,7 @@
         <span>
             <div class="titel">{{item.poll.titel}}</div>
             <button (click)="deletePoll()" mat-button *ngIf="heeftAangemaaktBool"><fa-icon [icon]="faTrash"></fa-icon></button>
-            <button (click)="acceptPollRequest()" mat-button *ngIf="!heeftGeaccepteerdBool"><fa-icon [icon]="faTrash"></fa-icon>accept</button>
+            <button (click)="acceptPollRequest()" mat-button *ngIf="!heeftGeaccepteerdBool">Accepteer</button>
         </span> 
         
     <ng-container *ngIf="!voted; else showBlock">

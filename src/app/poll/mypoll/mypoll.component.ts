@@ -1,9 +1,5 @@
-import { Component, OnInit, ViewChild, Input, AfterViewInit, OnChanges } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PollService } from '../poll.service';
-import { Poll } from '../models/poll.model';
-import { Keuze } from '../models/keuze.model';
-import { Gebruiker } from 'src/app/security/models/gebruiker.model';
-import { Stem } from '../models/stem.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './mypoll.component.html',
   styleUrls: ['./mypoll.component.css']
 })
-export class MypollComponent implements OnInit, OnChanges {
+export class MypollComponent implements OnInit {
   allPolls:{
     pollId:number;
     titel:string;
@@ -31,29 +27,26 @@ export class MypollComponent implements OnInit, OnChanges {
     this.allPollsAangemaakt=[];
   }
 
+  //Haalt alle pollGebruikers op waar gebruiker = de ingelogde gebruiker
+  //Sorteert deze pollGebruiker in 3 categorieën: Polls die hij heeft aangemaakt, polls waarvoor hij een uitnodiging heeft 
+  //en polls van zijn vrienden waarvan hij de uitnodiging al geaccepteerd heeft.
   getPolls(){
     var teller = 0;
     this.pollService.getPollsWhereGebruiker(parseInt(localStorage.getItem("id"))).forEach(element =>{
       while (element[teller]){
         if(element[teller].heeftAangemaakt == true){
           this.allPollsAangemaakt.push(element[teller])
-          teller++;
         }else if (element[teller].heeftGeaccepteerd == false){
           this.allPollRequests.push(element[teller])
-          teller++;
         }else{
           this.allPolls.push(element[teller])
-          teller++;
         }
+        teller++;
       }
-      console.log(this.allPolls)
     });
   }
 
-  
-  ngOnChanges() {
-    
-  }
+
 
   ngOnInit(){    
     this.getPolls()

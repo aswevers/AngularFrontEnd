@@ -1,3 +1,4 @@
+//Model om pollgebruikers in het component te gebruiker en weg te schrijven naar de API
 import { Gebruiker } from 'src/app/security/models/gebruiker.model';
 import { Poll } from './poll.model';
 

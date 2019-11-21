@@ -29,14 +29,18 @@ export class RegisterComponent implements OnInit {
   cpass:String ;
   emails:{}[];
   bestaatAl:boolean;
+
+  //Haalt eerste wachtwoord input value op
   setPW(event){
     this.pass =  event.target.value;
   }
   
+  //Haalt tweede wachtwoord input value op
   setCP(event){
     this.cpass =  event.target.value;
   }
   
+  //controleert dat deze twee waardes hetzelfde zijn
   checkPasswords(){
     if(this.pass == this.cpass){
       return true;
@@ -45,6 +49,7 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  //haalt alle gebruikers op en zet de emails hiervan in een array
   getGebruikers(){
     var count = 0;
     this._authenticateService.getGebruikers().subscribe(element =>{
@@ -54,6 +59,8 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
+
+  //Kijkt of ingegeven email al een bestaand account heeft
   checkEmail(event){
     if(this.emails.includes(event.target.value)){
       this.bestaatAl = true;
@@ -61,6 +68,8 @@ export class RegisterComponent implements OnInit {
       this.bestaatAl = false;
     }
   }
+
+  //Voegt nieuwe gebruiker toe
   onSubmit() {
     this._authenticateService.register(this.gebruikerLogin).subscribe(result => {
       console.log(this.gebruikerLogin);

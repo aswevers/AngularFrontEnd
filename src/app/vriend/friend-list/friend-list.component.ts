@@ -19,6 +19,8 @@ export class FriendListComponent implements OnInit {
 
   friends:{}[];
   loggedIn:string;
+
+  //Haalt alle vrienden op waar de ingelogde gebruiker deel van uitmaakt
   getVrienden(){
     var count = 0;
     this.vriendService.getVriendenById(parseInt(localStorage.getItem("id"))).subscribe(element =>{
@@ -26,10 +28,10 @@ export class FriendListComponent implements OnInit {
         this.friends.push(element[count]);
         count++;
       }
-      console.log(this.friends)
     })
   }
 
+  //Verwijdert vriend relatie
   deleteFriend(id:number){
     this.vriendService.deleteRequest(id).subscribe();
     window.location.reload();

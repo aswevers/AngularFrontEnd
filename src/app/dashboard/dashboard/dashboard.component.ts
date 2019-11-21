@@ -20,20 +20,16 @@ export class DashboardComponent implements OnInit {
     this.cards = [];
    }
 
-
+   //Cards vullen met de informatie van alle mogelijke pagina's (naam, beschrijving en link naar het component)
    fillNavItem(){
      this.cards.push({title:"Vrienden", description:"Voeg nieuwe vrienden toe", link:"friends"}, 
      {title:"Nieuwe poll", description:"Maak een nieuwe poll aan", link:"newpoll"},
      {title:"Mijn polls", description:"Polls die jij hebt aangemaakt of aan bent toegevoegd", link:"mypolls"},
      {title:"Wachtwoord veranderen", description:"Verander je wachtwoord", link:"changepassword"},
      {title:"Log uit", description:"Log je uit", link:""});
-     console.log(this.cards)
    }
 
   ngOnInit() {
     this.fillNavItem();
   }
-
-  
-  //When sending a FR => set logged in user as gebruiker1 so that when showing pending requests gebruiker2 is always the receiver of the request
 }

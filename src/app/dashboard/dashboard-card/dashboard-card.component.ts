@@ -13,18 +13,11 @@ export class DashboardCardComponent implements OnInit {
   @Input() itemdescription:string;
   @Input() itemlink:string;
   constructor(private dashboardService:DashboardService, private pollService: PollService) { 
-    this.friendRequests=[];
 
   }
 
   pendingFriends:number = 0;
-  friendRequests:{
-    gebruiker1Id:number;
-    gebruiker2Id:number;
-    gebruiker1:Gebruiker;
-    gebruiker2:Gebruiker;
-    geaccepteerd:boolean;
-  }[];
+  
   pendingPolls:number=0;
   ngOnInit() {
     this.getPendingFriendRequests();
@@ -38,17 +31,20 @@ export class DashboardCardComponent implements OnInit {
     }
   }
 
+  //Haalt vriendschapsverzoeken op (vriend-relaties waar met de ingelogde gebruiker als gebruiker1 en IsGeaccepteerd == false)
+  //pendingFriends is het aantal vriendenschapsverzoeken
   getPendingFriendRequests(){
     var count = 0;
     this.dashboardService.getPendingFriendRequests(parseInt(localStorage.getItem("id"))).forEach(element =>{
       while(element[count]){
-        this.friendRequests.push(element[count]);
         count++;
       };
      this.pendingFriends = count;
     });
   }
 
+  //Haalt pollrequests op (pollGebruikers waar heeftGeaccepteerd == false)
+  //pendingPolls is het aantal pollverzoeken
   getPollRequests(){
     var count = 0;
     this.pollService.getPollsWhereGebruiker(parseInt(localStorage.getItem("id"))).subscribe(result =>{

@@ -55,7 +55,7 @@ export class VriendService {
     var gebruiker1;
     var gebruiker2;
     var vriend;
-    //Checken of email bestaat, zo niet nieuwe gebruiker aanmaken met temporary wachtwoord.
+    //Checken of email bestaat, zo niet nieuwe gebruiker aanmaken met temporary wachtwoord en mail versturen naar meegegeven email.
     this.getByEmail(email).subscribe(element=>{
       gebruiker1 = element;
       console.log(gebruiker1)
