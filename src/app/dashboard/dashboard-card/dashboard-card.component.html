@@ -3,7 +3,10 @@
         <div class="dashboard-card-new">Nieuwe verzoeken!</div>
     </div>
     <ng-template #elseBlock>
-        <img src="https://loremflickr.com/280/200/friendship" />
+        <img *ngIf="itemlink != ''; else elseImg" src="../../../assets/images/{{itemlink}}.jpg" width="280px" height="200px"/>
+        <ng-template #elseImg>
+            <img  src="../../../assets/images/loguit.png" width="280px" height="200px"/>
+        </ng-template>
     </ng-template>
     <div class="card-head">
         <p class="card-title">{{itemtitel}}</p>
