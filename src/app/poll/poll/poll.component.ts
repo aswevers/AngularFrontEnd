@@ -142,4 +142,10 @@ export class PollComponent implements OnInit, OnChanges {
     window.location.reload();
   }
 
+  //Delete een uitnodiging voor een poll
+  deletePollRequest(){
+    var pollGebruiker = this.item;
+    this.pollService.deletePollGebruiker(pollGebruiker.pollGebruikerId).subscribe();
+    window.location.reload();
+  }
 }

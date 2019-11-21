@@ -43,10 +43,6 @@ export class VriendService {
     return this._httpClient.get<Gebruiker>("https://localhost:44369/api/Gebruiker/" + id);
   }
 
-  newEmptyGebruiker(email:string){
-    return this._httpClient.get<Gebruiker>("https://localhost:44369/api/Gebruiker/newEmptyGebruiker/"+ email);
-  }
-
   putGebruiker(id:number, gebruiker:Gebruiker){
     return this._httpClient.put<Gebruiker>("https://localhost:44369/api/Gebruiker/"+ id, gebruiker);
   }
@@ -57,16 +53,17 @@ export class VriendService {
     var vriend;
     //Checken of email bestaat, zo niet nieuwe gebruiker aanmaken met temporary wachtwoord en mail versturen naar meegegeven email.
     this.getByEmail(email).subscribe(element=>{
-      gebruiker1 = element;
-      console.log(gebruiker1)
-      this.sendMailTest(email).subscribe();
+      gebruiker1 = element;    
+      if(gebruiker1.password == "temp123"){
+        this.sendMailTest(email).subscribe();
+      }
     });
     
     //Huidige gebruiker ophalen
     this.getGebruiker(userId).subscribe(element=>{
       gebruiker2 = element;
       //vriend maken
-      vriend = new Vriend(gebruiker1.gebruikerId, gebruiker2.gebruikerId, gebruiker1, gebruiker2, false);
+      vriend = new Vriend(gebruiker1.gebruikerId, gebruiker2.gebruikerId, gebruiker2, gebruiker1, false);
       this.postVriend(vriend).subscribe();
     });
 

@@ -20,7 +20,7 @@ export class FriendListComponent implements OnInit {
   friends:{}[];
   loggedIn:string;
 
-  //Haalt alle vrienden op waar de ingelogde gebruiker deel van uitmaakt
+  //Haalt alle vrienden op waar de ingelogde gebruiker deel van uitmaakt en die geaccepteerd zijn
   getVrienden(){
     var count = 0;
     this.vriendService.getVriendenById(parseInt(localStorage.getItem("id"))).subscribe(element =>{

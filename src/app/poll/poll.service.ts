@@ -68,6 +68,10 @@ export class PollService {
   putPollGebruiker(id: number, poll:Pollgebruiker) {
     return this._httpClient.put<Pollgebruiker>("https://localhost:44369/api/PollGebruiker/" + id, poll);
   }
+
+  deletePollGebruiker(id:number){
+    return this._httpClient.delete<Pollgebruiker>("https://localhost:44369/api/PollGebruiker/" + id);
+  }
   
 
 
